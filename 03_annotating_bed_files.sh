@@ -5,15 +5,15 @@ module load bedtools
 
 # Calling bedtools intersect function and specifying it should provide all information from the original files 
 bedtools intersect -wa -wb \
--a /scratch/c.c1625032/dissertation/data/200518_A00748_0027_AHLKFCDRXX_19M15338.qc-coverage-region-1_cov_report.bed \
--b /scratch/c.c1625032/dissertation/resources/Homo_sapiens.GRCh37.75.gtf | \
+-a <FILE>.bed \
+-b Homo_sapiens.GRCh37.75.gtf | \
 # Filtering just for genes
 awk -F "\t" '$10 == "gene"' | \
 # Keeping selected columns
-cut -f 1,2,3,14,16 > /scratch/c.c1625032/dissertation/output/annotation/gene_bed_file.bed
+cut -f 1,2,3,14,16 > <OUTPUT_DIRECTORY>/annotation/gene_bed_file.bed
 
 # Moving into annotaion directory
-cd /scratch/c.c1625032/dissertation/output/annotation/
+cd <OUTPUT_DIRECTORY>/annotation/
 
 # Splitting annotated_bed_file.bed so the final columns can be seperated
 cut -f1,2,3,4 gene_bed_file.bed > first_half_gene_bed_file.bed
@@ -51,15 +51,15 @@ mv rmdup gene_bed_file.bed
 
 # Calling bedtools intersect function and specifying it should provide all information from the original files
 bedtools intersect -wa -wb \
--a /scratch/c.c1625032/dissertation/data/200518_A00748_0027_AHLKFCDRXX_19M15338.qc-coverage-region-1_cov_report.bed \
--b /scratch/c.c1625032/dissertation/resources/Homo_sapiens.GRCh37.75.gtf | \
+-a <FILE> \
+-b Homo_sapiens.GRCh37.75.gtf | \
 # Filtering just for genes
 awk -F "\t" '$10 == "exon"' | \
 # Keeping selected columns
-cut -f 1,2,3,14,16 > /scratch/c.c1625032/dissertation/output/annotation/exon_bed_file.bed
+cut -f 1,2,3,14,16 > <OUTPUT_DIRECTORY>/annotation/exon_bed_file.bed
 
 # Moving into annotation directory
-cd /scratch/c.c1625032/dissertation/output/annotation/
+cd <OUTPUT_DIRECTORY>/annotation/
 
 # Splitting annotated_bed_file.bed so the final columns can be seperated
 cut -f1,2,3,4 exon_bed_file.bed > first_half_exon_bed_file.bed
