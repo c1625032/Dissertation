@@ -8,7 +8,7 @@ import pandas as pd
 #print(os.getcwd())
 
 # Path to output directory is stored in a variable so it is easier to refer to later.
-outputDirectory = "/scratch/c.c1625032/dissertation/output/coverage"
+outputDirectory = "<PATH>/coverage"
 
 ##### Genes
 
@@ -30,7 +30,7 @@ mean_coverage_dataframe.drop(underThresehold, inplace=True)
 mean_low_coverage_genes = mean_coverage_dataframe.iloc[:, [0] + [1] + [2] + [3] + [4] + [5] + [-1]]
 
 # Exporting low coverage genes dataframe
-mean_low_coverage_genes.to_csv("/scratch/c.c1625032/dissertation/output/low_coverage_regions/mean_low_coverage_genes", header=True, sep='\t', index=False)
+mean_low_coverage_genes.to_csv("<PATH>/mean_low_coverage_genes", header=True, sep='\t', index=False)
 
 ### Pct coverage
 
@@ -50,7 +50,7 @@ above_15_pct_dataframe.drop(underThresehold, inplace=True)
 pct_low_coverage_genes = above_15_pct_dataframe.iloc[:, [0] + [1] + [2] + [3] + [4] + [5] + [-1]]
 
 # Exporting low coverage genes dataframe
-pct_low_coverage_genes.to_csv("/scratch/c.c1625032/dissertation/output/low_coverage_regions/pct_low_coverage_genes", header=True, sep='\t', index=False)
+pct_low_coverage_genes.to_csv("<PATH>/pct_low_coverage_genes", header=True, sep='\t', index=False)
 
 ##### Exons
 
@@ -72,7 +72,7 @@ mean_coverage_dataframe.drop(underThresehold, inplace=True)
 mean_low_coverage_genes = mean_coverage_dataframe.iloc[:, [0] + [1] + [2] + [3] + [4] + [5] + [6] + [-1]]
 
 # Exporting low coverage genes dataframe
-mean_low_coverage_genes.to_csv("/scratch/c.c1625032/dissertation/output/low_coverage_regions/mean_low_coverage_exons", header=True, sep='\t', index=False)
+mean_low_coverage_genes.to_csv("<PATH>/mean_low_coverage_exons", header=True, sep='\t', index=False)
 
 ### Pct Coverage
 
@@ -92,7 +92,7 @@ above_15_pct_dataframe.drop(underThresehold, inplace=True)
 pct_low_coverage_genes = above_15_pct_dataframe.iloc[:, [0] + [1] + [2] + [3] + [4] + [5] + [6] + [-1]]
 
 # Exporting low coverage genes dataframe
-pct_low_coverage_genes.to_csv("/scratch/c.c1625032/dissertation/output/low_coverage_regions/pct_low_coverage_exons", header=True, sep='\t', index=False)
+pct_low_coverage_genes.to_csv("<PATH>/pct_low_coverage_exons", header=True, sep='\t', index=False)
 
 print('Done')
 
