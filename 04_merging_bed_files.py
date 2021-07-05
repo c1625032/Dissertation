@@ -8,7 +8,7 @@ import pandas as pd
 #print(os.getcwd())
 
 # Path to data directory is stored in a variable so it is easier to refer to later.
-dataDirectory = "/scratch/c.c1625032/dissertation/data"
+dataDirectory = "<PATH>"
 
 # Creating a list containing the names of all files within the data directory so they can be called easier.
 fileNames = os.listdir(dataDirectory)
@@ -33,7 +33,7 @@ for filename in fileNames:
 ##### Genes
 
 # Reading in the gtf intersect file
-gene_annotation_file = pd.read_table("/scratch/c.c1625032/dissertation/output/annotation/gene_bed_file.bed", names=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name"])
+gene_annotation_file = pd.read_table("<PATH>/gene_bed_file.bed", names=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name"])
 
 ### Gene pct above 15
 
@@ -69,7 +69,7 @@ for i in range(0, len(fileNames)):
 output = gene_annotation_file.merge(file, how='left', on='Start')
 
 # Exporting merged dataframe
-output.to_csv("/scratch/c.c1625032/dissertation/output/coverage/genes_pct_above_15_dataframe.bed",header=True, sep='\t', index=False)
+output.to_csv("<PATH>coverage/genes_pct_above_15_dataframe.bed",header=True, sep='\t', index=False)
 
 print('Gene percentage coverage file created')
 
@@ -77,7 +77,7 @@ print('Gene percentage coverage file created')
 
 # This for loop is going to perform the filtering and merging of the data files into a single dataframe.
 # In each iteration the for loop will perform the following actions on each of the data files before merging.
-# First range, an inbuilt python function, is used to create a sequence from the file at index 0 to the index at the end of file $
+# First range, an inbuilt python function, is used to create a sequence from the file at index 0 to the index at the end of file names.
 # len is used to return the number of items within in a list to specify the last number in the fileNames varibale (5).
 for i in range(0, len(fileNames)):
 	# A condidtional 'if' is created to specify the file at index 0, ie the first file.
@@ -90,7 +90,7 @@ for i in range(0, len(fileNames)):
 		file = df.iloc[:, [1] + [3]]
 		# Renaming column according to file name
 		file.columns = [*file.columns[:-1], '' + fileNames[i]]
-	# An else if statement to escape the 'if' statement. Here all file with an index of one or greater are filtered using the$
+	# An else if statement to escape the 'if' statement. Here all file with an index of one or greater are filtered using the same parameters above.
 	elif i >=1:
 		# Print statement to let the user know how much progress has been made.
 		print('Merging file ' + str(i + 1) + ' out of ' + str(len(fileNames)) + '.')
@@ -107,14 +107,14 @@ for i in range(0, len(fileNames)):
 output = gene_annotation_file.merge(file, how='left', on='Start')
 
 # Exporting merged dataframe
-output.to_csv("/scratch/c.c1625032/dissertation/output/coverage/genes_mean_coverage_dataframe.bed",header=True, sep='\t', index=False)
+output.to_csv("<PATH>genes_mean_coverage_dataframe.bed",header=True, sep='\t', index=False)
 
 print('Gene mean coverage file created')
 
 ### Exons
 
 # Reading in the gtf intersect file
-exon_annotation_file = pd.read_table("/scratch/c.c1625032/dissertation/output/annotation/exon_bed_file.bed", names=["Chr", "Start", "End", "Strand", "Gene_ID", "Exon", "Gene_Name"])
+exon_annotation_file = pd.read_table("<PATH>exon_bed_file.bed", names=["Chr", "Start", "End", "Strand", "Gene_ID", "Exon", "Gene_Name"])
 
 ### Exon pct above 15
 
@@ -133,7 +133,7 @@ for i in range(0, len(fileNames)):
 		file = df.iloc[:, [1] + [6]]
 		# Renaming column according to file name
 		file.columns = [*file.columns[:-1], '' + fileNames[i]]
-	# An else if statement to escape the 'if' statement. Here all file with an index of one or greater are filtered using the same paramet$
+	# An else if statement to escape the 'if' statement. Here all file with an index of one or greater are filtered using the same parameters above.
 	elif i >=1:
 		# Print statement to let the user know how much progress has been made.
 		print('Merging file ' + str(i + 1) + ' out of ' + str(len(fileNames)) + '.')
@@ -150,7 +150,7 @@ for i in range(0, len(fileNames)):
 output = exon_annotation_file.merge(file, how='left', on='Start')
 
 # Exporting merged dataframe
-output.to_csv("/scratch/c.c1625032/dissertation/output/coverage/exons_pct_above_15_dataframe.bed",header=True, sep='\t', index=False)
+output.to_csv("<PATH>exons_pct_above_15_dataframe.bed",header=True, sep='\t', index=False)
 
 print('Exon percentage coverage file created')
 
@@ -158,7 +158,7 @@ print('Exon percentage coverage file created')
 
 # This for loop is going to perform the filtering and merging of the data files into a single dataframe.
 # In each iteration the for loop will perform the following actions on each of the data files before merging.
-# First range, an inbuilt python function, is used to create a sequence from the file at index 0 to the index at the end of file $
+# First range, an inbuilt python function, is used to create a sequence from the file at index 0 to the index at the end of file names.
 # len is used to return the number of items within in a list to specify the last number in the fileNames varibale (5).
 for i in range(0, len(fileNames)):	
 # A condidtional 'if' is created to specify the file at index 0, ie the first file.
@@ -171,7 +171,7 @@ for i in range(0, len(fileNames)):
 		file = df.iloc[:, [1] + [3]]
 		# Renaming column according to file name
 		file.columns = [*file.columns[:-1], '' + fileNames[i]]
-	# An else if statement to escape the 'if' statement. Here all file with an index of one or greater are filtered using the$
+	# An else if statement to escape the 'if' statement. Here all file with an index of one or greater are filtered using the same parameters above.
 	elif i >=1:
 		# Print statement to let the user know how much progress has been made.
 		print('Merging file ' + str(i + 1) + ' out of ' + str(len(fileNames)) + '.')
@@ -188,6 +188,6 @@ for i in range(0, len(fileNames)):
 output = exon_annotation_file.merge(file, how='left', on='Start')
 
 # Exporting merged dataframe
-output.to_csv("/scratch/c.c1625032/dissertation/output/coverage/exons_mean_coverage_dataframe.bed",header=True, sep='\t', index=False)
+output.to_csv("<PATH>exons_mean_coverage_dataframe.bed",header=True, sep='\t', index=False)
 
 print('Exon mean coverage file created')
