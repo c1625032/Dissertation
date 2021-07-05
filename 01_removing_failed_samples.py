@@ -8,7 +8,7 @@ import pandas as pd
 #print(os.getcwd())
 
 # Path to data directory is stored in a variable so it is easier to refer to later.
-dataDirectory = "<path>"
+dataDirectory = "<PATH>"
 
 # Creating a list containing the names of all files within the data directory so they can be called easier.
 fileNames = os.listdir(dataDirectory)
