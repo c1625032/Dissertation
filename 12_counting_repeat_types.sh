@@ -1,7 +1,7 @@
 ### Mean coverage exons
 
 # Entering direcory
-cd /scratch/c.c1625032/dissertation/output/low_coverage_outputs/06-omim-annotation
+cd <PATH>/06-omim-annotation
 
 # Cutting the repeat columns
 cut -f10 exons_mean_repeat_clinvar_omim_annotation > mean_class
