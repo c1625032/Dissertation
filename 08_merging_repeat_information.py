@@ -9,7 +9,7 @@ import pandas as pd
 ### Mean Coverage
 
 # Reading in file
-genes_mean_file = pd.read_table("/scratch/c.c1625032/dissertation/output/low_coverage_outputs/04-repeat-annotation/genes_mean_repeat_annotation", names=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Mean_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
+genes_mean_file = pd.read_table("<PATH>/genes_mean_repeat_annotation", names=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Mean_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
 
 # Grouping repeat name column if all other columns match
 genes_mean_file = genes_mean_file.groupby(by=['Chr', 'Start', 'End', 'Strand', 'Gene_ID', 'Gene_Name', 'Mean_Coverage', 'Repeat_Class', 'Repeat_Family'], as_index=False).agg({'Repeat_Name': ','.join})
@@ -18,11 +18,11 @@ genes_mean_file = genes_mean_file.groupby(by=['Chr', 'Start', 'End', 'Strand', '
 genes_mean_file = genes_mean_file.reindex(columns=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Mean_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
 
 # Exporting file
-genes_mean_file.to_csv("/scratch/c.c1625032/dissertation/output/low_coverage_outputs/04-repeat-annotation/genes_mean_repeat_annotation",header=True, sep='\t', index=False)
+genes_mean_file.to_csv("<PATH>/04-repeat-annotation/genes_mean_repeat_annotation",header=True, sep='\t', index=False)
 
 ### Pct Coverage
 # Reading in file
-genes_pct_file = pd.read_table("/scratch/c.c1625032/dissertation/output/low_coverage_outputs/04-repeat-annotation/genes_pct_repeat_annotation", names=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Pct_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
+genes_pct_file = pd.read_table("<PATH>/genes_pct_repeat_annotation", names=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Pct_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
 
 # Grouping repeat name column if all other columns match
 genes_pct_file = genes_pct_file.groupby(by=['Chr', 'Start', 'End', 'Strand', 'Gene_ID', 'Gene_Name', 'Pct_Coverage', 'Repeat_Class', 'Repeat_Family'], as_index=False).agg({'Repeat_Name': ','.join})
@@ -31,7 +31,7 @@ genes_pct_file = genes_pct_file.groupby(by=['Chr', 'Start', 'End', 'Strand', 'Ge
 genes_pct_file = genes_pct_file.reindex(columns=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Pct_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
 
 # Exporting file
-genes_pct_file.to_csv("/scratch/c.c1625032/dissertation/output/low_coverage_outputs/04-repeat-annotation/genes_pct_repeat_annotation",header=True, sep='\t', index=False)
+genes_pct_file.to_csv("<PATH>/genes_pct_repeat_annotation",header=True, sep='\t', index=False)
 
 ##### Exons
 
