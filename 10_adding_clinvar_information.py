@@ -8,10 +8,10 @@ import pandas as pd
 #print(os.getcwd())
 
 # Path to clinvar directory is stored in a variable so it is easier to refer to later.
-clinvarDirectory = "/scratch/c.c1625032/dissertation/output/all_regions_output/05-clinvar-annotation"
+clinvarDirectory = "<PATH>/output/all_regions_output/05-clinvar-annotation"
 
 # Path to repeat directory is stored in a variable so it is easier to refer to later.
-repeatDirectory = "/scratch/c.c1625032/dissertation/output/all_regions_output/04-repeat-annotation"
+repeatDirectory = "<PATH>/output/all_regions_output/04-repeat-annotation"
  
 # Reading in repeat annotation file
 repeat = pd.read_table(os.path.join(repeatDirectory, "total_dataframe_repeat_annotation"))
@@ -23,6 +23,6 @@ clinvar = pd.read_table(os.path.join(clinvarDirectory, "total_dataframe_repeat_c
 output = repeat.merge(clinvar, how='left', on='Start')
 
 # Exporting low coverage genes dataframe
-output.to_csv("/scratch/c.c1625032/dissertation/output/all_regions_output/05-clinvar-annotation/total_dataframe_repeat_clinvar_annotation", header=True, sep='\t', index=False)
+output.to_csv("<PATH>/output/all_regions_output/05-clinvar-annotation/total_dataframe_repeat_clinvar_annotation", header=True, sep='\t', index=False)
 
 print('Done')
