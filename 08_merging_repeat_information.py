@@ -37,7 +37,7 @@ genes_pct_file.to_csv("<PATH>/genes_pct_repeat_annotation",header=True, sep='\t'
 
 ### Mean Coverage
 # Reading in file
-exons_mean_file = pd.read_table("/scratch/c.c1625032/dissertation/output/low_coverage_outputs/04-repeat-annotation/exons_mean_repeat_annotation", names=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Exon(s)", "Mean_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
+exons_mean_file = pd.read_table("<PATH>/exons_mean_repeat_annotation", names=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Exon(s)", "Mean_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
 
 # Grouping repeat name column if all other columns match
 exons_mean_file = exons_mean_file.groupby(by=['Chr', 'Start', 'End', 'Strand', 'Gene_ID', 'Gene_Name', 'Exon(s)', 'Mean_Coverage', 'Repeat_Class', 'Repeat_Family'], as_index=False).agg({'Repeat_Name': ','.join})
@@ -46,11 +46,11 @@ exons_mean_file = exons_mean_file.groupby(by=['Chr', 'Start', 'End', 'Strand', '
 exons_mean_file = exons_mean_file.reindex(columns=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Exon(s)", "Mean_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
 
 # Exporting file
-exons_mean_file.to_csv("/scratch/c.c1625032/dissertation/output/low_coverage_outputs/04-repeat-annotation/exons_mean_repeat_annotation",header=True, sep='\t', index=False)
+exons_mean_file.to_csv("<PATH>/exons_mean_repeat_annotation",header=True, sep='\t', index=False)
 
 ### Pct coverage
 # Reading in file
-exons_pct_file = pd.read_table("/scratch/c.c1625032/dissertation/output/low_coverage_outputs/04-repeat-annotation/exons_pct_repeat_annotation", names=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Exon(s)", "Pct_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
+exons_pct_file = pd.read_table("<PATH>/exons_pct_repeat_annotation", names=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Exon(s)", "Pct_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
 
 # Grouping repeat name column if all other columns match
 exons_pct_file = exons_pct_file.groupby(by=['Chr', 'Start', 'End', 'Strand', 'Gene_ID', 'Gene_Name', 'Exon(s)', 'Pct_Coverage', 'Repeat_Class', 'Repeat_Family'], as_index=False).agg({'Repeat_Name': ','.join})
@@ -59,4 +59,4 @@ exons_pct_file = exons_pct_file.groupby(by=['Chr', 'Start', 'End', 'Strand', 'Ge
 exons_pct_file = exons_pct_file.reindex(columns=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Exon(s)", "Pct_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
 
 # Exporting file
-exons_pct_file.to_csv("/scratch/c.c1625032/dissertation/output/low_coverage_outputs/04-repeat-annotation/exons_pct_repeat_annotation",header=True, sep='\t', index=False)
+exons_pct_file.to_csv("<PATH>/exons_pct_repeat_annotation",header=True, sep='\t', index=False)
