@@ -8,7 +8,7 @@ import pandas as pd
 #print(os.getcwd())
 
 # Path to output directory is stored in a variable so it is easier to refer to later.
-outputDirectory = "/scratch/c.c1625032/dissertation/output/02-merging-bed-files"
+outputDirectory = "<PATH>/02-merging-bed-files"
 
 ### Mean coverage 
 
@@ -38,6 +38,6 @@ pct = pct.iloc[:, [1] + [-1]]
 output = mean.merge(pct, how='left', on='Start')
 
 # Exporting dataframe
-output.to_csv("/scratch/c.c1625032/dissertation/output/all_regions_output/03-calculating_average_coverage/total_dataframe", header=True, sep='\t', index=False)
+output.to_csv("<PATH>/output/all_regions_output/03-calculating_average_coverage/total_dataframe", header=True, sep='\t', index=False)
 
 print('Done')
