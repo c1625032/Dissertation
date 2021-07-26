@@ -5,7 +5,7 @@ import os, sys
 import pandas as pd
 
 # Reading in file
-file = pd.read_table("/scratch/c.c1625032/dissertation/output/all_regions_output/04-repeat-annotation/total_dataframe_repeat_annotation", names=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Exon(s)", "Mean_Coverage", "Percent_Coverage", "Repeat_Class"])
+file = pd.read_table("<PATH>/output/all_regions_output/04-repeat-annotation/total_dataframe_repeat_annotation", names=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Exon(s)", "Mean_Coverage", "Percent_Coverage", "Repeat_Class"])
 
 # Grouping repeat name column if all other columns match
 file = file.groupby(by=['Chr', 'Start', 'End', 'Strand', 'Gene_ID', 'Gene_Name', 'Exon(s)', 'Mean_Coverage', 'Percent_Coverage'], as_index=False).agg({'Repeat_Class': '/'.join})
@@ -14,5 +14,5 @@ file = file.groupby(by=['Chr', 'Start', 'End', 'Strand', 'Gene_ID', 'Gene_Name',
 file = file.reindex(columns=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Exon(s)", "Mean_Coverage", "Percent_Coverage", "Repeat_Class"])
 
 # Exporting file
-file.to_csv("/scratch/c.c1625032/dissertation/output/all_regions_output/04-repeat-annotation/total_dataframe_repeat_annotation",header=True, sep='\t', index=False)
+file.to_csv("<PATH>/output/all_regions_output/04-repeat-annotation/total_dataframe_repeat_annotation",header=True, sep='\t', index=False)
 
