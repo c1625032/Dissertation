@@ -8,10 +8,10 @@ import pandas as pd
 #print(os.getcwd())
 
 # Path to clinvar directory is stored in a variable so it is easier to refer to later.
-clinvarDirectory = "/scratch/c.c1625032/dissertation/output/low_coverage_outputs/05-clinvar-annotation"
+clinvarDirectory = "<PATH>/05-clinvar-annotation"
 
 # Path to repeat directory is stored in a variable so it is easier to refer to later.
-repeatDirectory = "/scratch/c.c1625032/dissertation/output/low_coverage_outputs/04-repeat-annotation"
+repeatDirectory = "<PATH>/04-repeat-annotation"
 
 ##### Genes
 
@@ -27,7 +27,7 @@ clinvar = pd.read_table(os.path.join(clinvarDirectory, "genes_mean_repeat_clinva
 output = repeat.merge(clinvar, how='left', on='Start')
 
 # Exporting low coverage genes dataframe
-output.to_csv("/scratch/c.c1625032/dissertation/output/low_coverage_outputs/05-clinvar-annotation/genes_mean_repeat_clinvar_annotation", header=True, sep='\t', index=False)
+output.to_csv("<PATH>/genes_mean_repeat_clinvar_annotation", header=True, sep='\t', index=False)
 
 ### Pct coverage
 # Reading in repeat annotation file
@@ -40,7 +40,7 @@ clinvar = pd.read_table(os.path.join(clinvarDirectory, "genes_pct_repeat_clinvar
 output = repeat.merge(clinvar, how='left', on='Start')
 
 # Exporting low coverage genes dataframe
-output.to_csv("/scratch/c.c1625032/dissertation/output/low_coverage_outputs/05-clinvar-annotation/genes_pct_repeat_clinvar_annotation", header=True, sep='\t', index=False)
+output.to_csv("<PATH>/genes_pct_repeat_clinvar_annotation", header=True, sep='\t', index=False)
 
 ##### Exons
 
@@ -55,7 +55,7 @@ clinvar = pd.read_table(os.path.join(clinvarDirectory, "exons_mean_repeat_clinva
 output = repeat.merge(clinvar, how='left', on='Start')
 
 # Exporting low coverage genes dataframe
-output.to_csv("/scratch/c.c1625032/dissertation/output/low_coverage_outputs/05-clinvar-annotation/exons_mean_repeat_clinvar_annotation", header=True, sep='\t', index=False)
+output.to_csv("<PATH>/exons_mean_repeat_clinvar_annotation", header=True, sep='\t', index=False)
 
 ### Pct Coverage
 # Reading in repeat annotation file
@@ -68,6 +68,6 @@ clinvar = pd.read_table(os.path.join(clinvarDirectory, "exons_pct_repeat_clinvar
 output = repeat.merge(clinvar, how='left', on='Start')
 
 # Exporting low coverage genes dataframe
-output.to_csv("/scratch/c.c1625032/dissertation/output/low_coverage_outputs/05-clinvar-annotation/exons_pct_repeat_clinvar_annotation", header=True, sep='\t', index=False)
+output.to_csv("<PATH>/exons_pct_repeat_clinvar_annotation", header=True, sep='\t', index=False)
 
 print('Done')
