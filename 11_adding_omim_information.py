@@ -8,10 +8,10 @@ import pandas as pd
 #print(os.getcwd())
 
 # Path to clinvar directory is stored in a variable so it is easier to refer to later.
-clinvarDirectory = "/scratch/c.c1625032/dissertation/output/low_coverage_outputs/05-clinvar-annotation"
+clinvarDirectory = "<PATH>/05-clinvar-annotation"
 
 # Reading in omim file
-omim = pd.read_table("/scratch/c.c1625032/dissertation/resources/omim/genemap2.txt")
+omim = pd.read_table("<PATH>/genemap2.txt")
 
 # Selecting appropriate columns
 omim = omim.iloc[ : , [10] + [12]]
@@ -30,7 +30,7 @@ clinvar = pd.read_table(os.path.join(clinvarDirectory, "genes_mean_repeat_clinva
 output = clinvar.merge(omim, how='left', on='Gene_ID')
 
 # Exporting low coverage genes dataframe
-output.to_csv("/scratch/c.c1625032/dissertation/output/low_coverage_outputs/06-omim-annotation/genes_mean_repeat_clinvar_omim_annotation", header=True, sep='\t', index=False)
+output.to_csv("<PATH>/genes_mean_repeat_clinvar_omim_annotation", header=True, sep='\t', index=False)
 
 ### Pct coverage
 # Reading in clinvar annotation file
@@ -40,7 +40,7 @@ clinvar = pd.read_table(os.path.join(clinvarDirectory, "genes_pct_repeat_clinvar
 output = clinvar.merge(omim, how='left', on='Gene_ID')
 
 # Exporting low coverage genes dataframe
-output.to_csv("/scratch/c.c1625032/dissertation/output/low_coverage_outputs/06-omim-annotation/genes_pct_repeat_clinvar_omim_annotation", header=True, sep='\t', index=False)
+output.to_csv("<PATH>/genes_pct_repeat_clinvar_omim_annotation", header=True, sep='\t', index=False)
 
 ##### Exons
 
@@ -52,7 +52,7 @@ clinvar = pd.read_table(os.path.join(clinvarDirectory, "exons_mean_repeat_clinva
 output = clinvar.merge(omim, how='left', on='Gene_ID')
 
 # Exporting low coverage genes dataframe
-output.to_csv("/scratch/c.c1625032/dissertation/output/low_coverage_outputs/06-omim-annotation/exons_mean_repeat_clinvar_omim_annotation", header=True, sep='\t', index=False)
+output.to_csv("<PATH>/exons_mean_repeat_clinvar_omim_annotation", header=True, sep='\t', index=False)
 
 ### Pct Coverage
 # Reading in clinvar annotation file
@@ -62,6 +62,6 @@ clinvar = pd.read_table(os.path.join(clinvarDirectory, "exons_pct_repeat_clinvar
 output = clinvar.merge(omim, how='left', on='Gene_ID')
 
 # Exporting low coverage genes dataframe
-output.to_csv("/scratch/c.c1625032/dissertation/output/low_coverage_outputs/06-omim-annotation/exons_pct_repeat_clinvar_omim_annotation", header=True, sep='\t', index=False)
+output.to_csv("<PATH>/exons_pct_repeat_clinvar_omim_annotation", header=True, sep='\t', index=False)
 
 print('Done')
