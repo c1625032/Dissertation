@@ -1,6 +1,3 @@
-#https://dash-gallery.plotly.host/dash-lastodash-de/ want something like this 
-#https://medium.com/swlh/dashboards-in-python-using-dash-creating-a-data-table-using-data-from-reddit-1d6c0cecb4bd - how to format tables
-
 # Importing modules
 import dash
 import dash_table
