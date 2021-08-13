@@ -1,62 +1,62 @@
 # Importing modules.
-# os is used to perform different opperating system tasks, sys is used to manipulate the run time environment.
-import os, sys
-# Pandas is a data frame manipulation module and here the as is used to create a shortcut name pd so calling the modules functions is$
+# os is used to perform different opperating system tasks.
+import os
+# Pandas is a data frame manipulation module, used 'as' to refer to pandas as 'pd' later in scripts.
 import pandas as pd
 
 ##### Genes
 
 ### Mean Coverage
 
-# Reading in file
-genes_mean_file = pd.read_table("<PATH>/genes_mean_repeat_annotation", names=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Mean_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
+# Reading in file.
+genes_mean_file = pd.read_table("<PATH_to_output_directory>/genes_mean_repeat_annotation", names=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Mean_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
 
-# Grouping repeat name column if all other columns match
+# Grouping repeat name column if all other columns match.
 genes_mean_file = genes_mean_file.groupby(by=['Chr', 'Start', 'End', 'Strand', 'Gene_ID', 'Gene_Name', 'Mean_Coverage', 'Repeat_Class', 'Repeat_Family'], as_index=False).agg({'Repeat_Name': ','.join})
 
-# Rearranging columns
+# Rearranging columns.
 genes_mean_file = genes_mean_file.reindex(columns=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Mean_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
 
-# Exporting file
-genes_mean_file.to_csv("<PATH>/04-repeat-annotation/genes_mean_repeat_annotation",header=True, sep='\t', index=False)
+# Exporting file.
+genes_mean_file.to_csv("<<PATH_to_output_directory>/genes_mean_repeat_annotation",header=True, sep='\t', index=False)
 
 ### Pct Coverage
-# Reading in file
-genes_pct_file = pd.read_table("<PATH>/genes_pct_repeat_annotation", names=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Pct_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
+# Reading in file.
+genes_pct_file = pd.read_table("<PATH_to_output_directory>/genes_pct_repeat_annotation", names=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Pct_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
 
-# Grouping repeat name column if all other columns match
+# Grouping repeat name column if all other columns match.
 genes_pct_file = genes_pct_file.groupby(by=['Chr', 'Start', 'End', 'Strand', 'Gene_ID', 'Gene_Name', 'Pct_Coverage', 'Repeat_Class', 'Repeat_Family'], as_index=False).agg({'Repeat_Name': ','.join})
 
-# Rearranging columns
+# Rearranging columns.
 genes_pct_file = genes_pct_file.reindex(columns=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Pct_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
 
-# Exporting file
-genes_pct_file.to_csv("<PATH>/genes_pct_repeat_annotation",header=True, sep='\t', index=False)
+# Exporting file.
+genes_pct_file.to_csv("<PATH_to_output_directory>/genes_pct_repeat_annotation",header=True, sep='\t', index=False)
 
 ##### Exons
 
 ### Mean Coverage
-# Reading in file
-exons_mean_file = pd.read_table("<PATH>/exons_mean_repeat_annotation", names=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Exon(s)", "Mean_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
+# Reading in file.
+exons_mean_file = pd.read_table("<PATH_to_output_directory>/exons_mean_repeat_annotation", names=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Exon(s)", "Mean_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
 
-# Grouping repeat name column if all other columns match
+# Grouping repeat name column if all other columns match.
 exons_mean_file = exons_mean_file.groupby(by=['Chr', 'Start', 'End', 'Strand', 'Gene_ID', 'Gene_Name', 'Exon(s)', 'Mean_Coverage', 'Repeat_Class', 'Repeat_Family'], as_index=False).agg({'Repeat_Name': ','.join})
 
-# Rearranging columns
+# Rearranging columns.
 exons_mean_file = exons_mean_file.reindex(columns=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Exon(s)", "Mean_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
 
-# Exporting file
-exons_mean_file.to_csv("<PATH>/exons_mean_repeat_annotation",header=True, sep='\t', index=False)
+# Exporting file.
+exons_mean_file.to_csv("<PATH_to_output_directory>/exons_mean_repeat_annotation",header=True, sep='\t', index=False)
 
 ### Pct coverage
-# Reading in file
-exons_pct_file = pd.read_table("<PATH>/exons_pct_repeat_annotation", names=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Exon(s)", "Pct_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
+# Reading in file.
+exons_pct_file = pd.read_table("<PATH_to_output_directory>/exons_pct_repeat_annotation", names=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Exon(s)", "Pct_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
 
-# Grouping repeat name column if all other columns match
+# Grouping repeat name column if all other columns match.
 exons_pct_file = exons_pct_file.groupby(by=['Chr', 'Start', 'End', 'Strand', 'Gene_ID', 'Gene_Name', 'Exon(s)', 'Pct_Coverage', 'Repeat_Class', 'Repeat_Family'], as_index=False).agg({'Repeat_Name': ','.join})
 
-# Rearranging columns
+# Rearranging columns.
 exons_pct_file = exons_pct_file.reindex(columns=["Chr", "Start", "End", "Strand", "Gene_ID", "Gene_Name", "Exon(s)", "Pct_Coverage", "Repeat_Name", "Repeat_Class", "Repeat_Family"])
 
-# Exporting file
-exons_pct_file.to_csv("<PATH>/exons_pct_repeat_annotation",header=True, sep='\t', index=False)
+# Exporting file.
+exons_pct_file.to_csv("<PATH_to_output_directory>/exons_pct_repeat_annotation",header=True, sep='\t', index=False)
