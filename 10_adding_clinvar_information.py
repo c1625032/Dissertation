@@ -6,10 +6,10 @@ import pandas as pd
 
 
 # Path to clinvar directory is stored as an object.
-clinvarDirectory = "<PATH_to_output_directory>/05-clinvar-annotation"
+clinvarDirectory = "<PATH_to_output_directory>"
 
 # Path to repeat directory is stored as an object.
-repeatDirectory = "<PATH_to_output_directory>/04-repeat-annotation"
+repeatDirectory = "<PATH_to_output_directory>"
  
 # Reading in repeat annotation file.
 repeat = pd.read_table(os.path.join(repeatDirectory, "total_dataframe_repeat_annotation"))
