@@ -18,7 +18,7 @@ mean_coverage_dataframe = pd.read_table(os.path.join(outputDirectory, "genes_mea
 mean_coverage_dataframe['Mean_Coverage'] = mean_coverage_dataframe.iloc[:, 6:167].mean(axis=1)
 
 # Creating series object (True and False statements) regarding whether each row meets conditions.
-underThresehold = mean_coverage_dataframe[ mean_coverage_dataframe['Mean_Coverage'] > 10 ].index
+underThresehold = mean_coverage_dataframe[ mean_coverage_dataframe['Mean_Coverage'] > 20 ].index
 
 # Dropping columns from original dataframe that don't meet the thresehold.
 mean_coverage_dataframe.drop(underThresehold, inplace=True)
@@ -60,7 +60,7 @@ mean_coverage_dataframe = pd.read_table(os.path.join(outputDirectory, "exons_mea
 mean_coverage_dataframe['Mean_Coverage'] = mean_coverage_dataframe.iloc[:, 7:168].mean(axis=1)
 
 # Creating series object (True and False statements) regarding whether each row meets conditions.
-underThresehold = mean_coverage_dataframe[ mean_coverage_dataframe['Mean_Coverage'] > 10 ].index
+underThresehold = mean_coverage_dataframe[ mean_coverage_dataframe['Mean_Coverage'] > 20 ].index
 
 # Dropping columns from original dataframe that don't meet the thresehold.
 mean_coverage_dataframe.drop(underThresehold, inplace=True)
